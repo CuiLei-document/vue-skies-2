@@ -1,0 +1,58 @@
+<template>
+  <div>
+    <button @click="toggle" :class="{ checked:value }">
+      <span></span>
+    </button>
+  </div>
+</template>
+
+<script lang="ts">
+import { ref } from "vue";
+export default {
+    props:{
+        value:Boolean
+    },
+    setup(props,context) {
+    const toggle = () => {
+      context.emit('input',!props.value)
+    };
+    return {
+      toggle,
+    };
+  },
+};
+</script>
+
+<style lang="scss" scope>
+@use "sass:math";
+$h: 22px;
+$h2: $h - 4px;
+button {
+  height: $h;
+  width: $h * 2;
+  border: none;
+  background: gray;
+  border-radius: math.div($h, 2);
+  position: relative;
+  
+  > span {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: $h2;
+    height: $h2;
+    background: white;
+    border-radius: math.div($h2, 2);
+    transition: left 250ms;
+  }
+  &.checked {
+    background: blue;
+  }
+  &.checked > span {
+    left: calc(100% - #{$h2} - 2px);
+  }
+  &:focus{
+      outline:none;
+  }
+}
+</style>
