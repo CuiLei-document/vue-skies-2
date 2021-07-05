@@ -2,7 +2,9 @@
   <div>
     <h2>示例一</h2>
     <Button @click="toggle">点击</Button>
-    <Dialog :visible="x" />
+    <Dialog v-model:visible="x"  :closeClickOverlay="true"
+    :ok="fn1" :count="fn2"
+    />
   </div>
 </template>
 
@@ -17,7 +19,14 @@ export default {
     const toggle = ()=>{
       x.value = !x.value
     }
-    return {toggle,x}
+    const fn1 = ()=>{
+      console.log('hi')
+      return false
+    }
+    const fn2 = ()=>{
+      console.log('爸爸')
+    }
+    return {toggle,x,fn1,fn2}
   },
 };
 </script>
