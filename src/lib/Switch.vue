@@ -22,7 +22,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
 @use "sass:math";
 $h: 22px;
 $h2: $h - 4px;

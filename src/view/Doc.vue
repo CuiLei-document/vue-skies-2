@@ -2,7 +2,8 @@
   <div class="layout">
     <Topnav class="nav" />
     <div class="content">
-      <aside v-if="asideVisible">
+      <transition name="fade">
+      <aside v-if="asideVisible" :class="{x:asideVisible}">
         <h2>组件列表</h2>
         <ol>
           <li>
@@ -19,6 +20,7 @@
           </li>
         </ol>
       </aside>
+      </transition>
       <main>
         <router-view />
       </main>
@@ -40,7 +42,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
 .layout {
   display: flex;
 //   flex-direction: column;
@@ -77,6 +79,7 @@ aside {
   left:0;
   padding-top: 70px;
   height:100%;
+  
   > h2 {
     margin-bottom: 4px;
   }
@@ -89,5 +92,11 @@ aside {
   main{
       overflow: auto;
   }
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
