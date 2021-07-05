@@ -53,6 +53,7 @@
     <h3>示例五</h3>
       <div>
         <Button :loading="true">加载中</Button>
+        <Button >加载完成</Button>
       </div>
   </div>
 </template>
