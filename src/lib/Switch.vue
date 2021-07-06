@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="gulu-switch" @click="toggle" :class="{'gulu-checked':value }">
+    <button class="gulu-switch" @click="toggle" :class="{'gulu-checked':value }" :disabled="disabled">
       <span></span>
     </button>
   </div>
@@ -9,7 +9,8 @@
 <script lang="ts">
 export default {
     props:{
-        value:Boolean
+        value:Boolean,
+        disabled:Boolean
     },
     setup(props,context) {
     const toggle = () => {
