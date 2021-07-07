@@ -40,7 +40,7 @@ export default {
     const defaults = context.slots.default();
     defaults.forEach((tag) => {
       if (tag.type !== Tab) {
-        throw new Error("我操了给dj");
+        throw new Error("弄啥类，错啦，不是Tab标签");
       }
     });
     const titles = defaults.map((tag) => {

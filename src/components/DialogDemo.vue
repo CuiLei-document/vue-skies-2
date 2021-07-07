@@ -1,61 +1,17 @@
 <template>
-  <div>
-    <h2>示例一</h2>
-    <Button @click="toggle">点击</Button>
-    <Dialog
-      v-model:visible="x"
-      :closeClickOverlay="true"
-      :ok="fn1"
-      :count="fn2"
-    >
-      <template v-slot:title> 
-        <strong>加粗的标题</strong>
-      </template>
-      <template v-slot:content>
-        <div>你好2</div>
-        <div>你好1</div>
-      </template>
-    </Dialog>
-  </div>
-  <div>
-    <h2>示例二</h2>
-     <Button @click="showDialog">showDialog</Button>
-  </div>
+   <Demo :component="Dialog1Demo"/>
+  <Demo :component="Dialog2Demo"/>
 </template>
 
 <script>
-import Dialog from "../lib/Dialog.vue";
-import Button from "../lib/Button.vue";
-import {openDialog} from '../lib/openDialog'
-import { ref } from "vue";
+
+import Demo from "./Demo.vue";
+import Dialog1Demo from "./Dialog1.demo.vue";
+import Dialog2Demo from "./Dialog2.demo.vue";
 export default {
-  components: { Dialog, Button },
+  components: { Demo },
   setup() {
-    const x = ref(false);
-    const toggle = () => {
-      x.value = !x.value;
-    };
-    const fn1 = () => {
-      console.log("hi");
-      return false;
-    };
-    const fn2 = () => {
-      console.log("爸爸");
-    };
-    const showDialog = ()=>{
-        openDialog({
-          title:`标题`,
-          content:`你好`,
-          ok(){
-            console.log('ok')
-            return  false
-          },
-          count(){
-            console.log('count')
-          }
-        })
-    }
-    return { toggle, x, fn1, fn2,showDialog };
+    return { Dialog1Demo, Dialog2Demo };
   },
 };
 </script>

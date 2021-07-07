@@ -5,14 +5,14 @@ import SwitchDemo from './components/SwitchDemo.vue'
 import ButtonDemo from './components/ButtonDemo.vue'
 import DialogDemo from './components/DialogDemo.vue'
 import TabsDemo from './components/TabsDemo.vue'
-
-import Introduce from './view/Introduce.vue'
-import Install from './view/Install.vue'
-import GetStart from './view/GetStart.vue'
-import Markdown from './view/Markdown.vue'
+import InputDemo from './components/InputDemo.vue'
+import install from './markdown/install.md'
+import intro from './markdown/intro.md'
+import GetStart from './markdown/get-start.md'
+import Markdown from './components/Markdown.vue'
 import { h } from '@vue/runtime-core'
 const history = createWebHashHistory()
-const x = fillName => h(Markdown,{path:`../markdown/${fillName}.md`,key:fillName})
+const x = string => h(Markdown,{content:string,key:string})
 export const router = createRouter({
     history,
     routes: [
@@ -26,15 +26,15 @@ export const router = createRouter({
             children: [
                 {
                     path:'introduce',
-                    component:x('Intro')
+                    component:x(intro)
                 },
                 {
                     path:'install',
-                    component:x('install')
+                    component:x(install)
                 },
                 {
                     path:'get-start',
-                    component:x('get-start')
+                    component:x(GetStart)
                 },
                 {
                     path: '/doc/switch',
@@ -51,6 +51,10 @@ export const router = createRouter({
                 {
                     path:'/doc/tabs',
                     component:TabsDemo
+                },
+                {
+                    path:'/doc/input',
+                    component:InputDemo
                 }
             ]
         }

@@ -1,6 +1,10 @@
+<demo>
+支持disabled
+</demo>
 <template>
     <Switch v-model:value="bool" disabled />
 </template>
+
 <script>
 import Switch from '../lib/Switch.vue'
 import {ref} from 'vue'
