@@ -24,7 +24,6 @@
 <script>
 import Dialog from "../lib/Dialog.vue";
 import Button from "../lib/Button.vue";
-import {openDialog} from '../lib/openDialog'
 import { ref } from "vue";
 export default {
   components: { Dialog, Button },
@@ -34,26 +33,11 @@ export default {
       x.value = !x.value;
     };
     const fn1 = () => {
-      console.log("hi");
       return false;
     };
     const fn2 = () => {
-      console.log("爸爸");
     };
-    const showDialog = ()=>{
-        openDialog({
-          title:`标题`,
-          content:`你好`,
-          ok(){
-            console.log('ok')
-            return  false
-          },
-          count(){
-            console.log('count')
-          }
-        })
-    }
-    return { toggle, x, fn1, fn2,showDialog };
+    return { toggle, x, fn1, fn2 };
   },
 };
 </script>

@@ -7,7 +7,7 @@
         <h2>一个不错的UI组件</h2>
         <p class="actions">
           <a href="">GitHub</a>
-          <router-link to="/doc">开始</router-link>
+          <router-link to="/doc/introduce">开始</router-link>
         </p>
       </div>
     </div>

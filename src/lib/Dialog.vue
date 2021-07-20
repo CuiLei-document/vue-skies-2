@@ -51,13 +51,14 @@ export default {
       }
     };
     const ok = () => {
-      if (props.ok?.() !== false) {
+      if (props.ok && props.ok() !== false) {
         close();
       }
     };
     const count = () => {
-        props.count?.() !== false
+      if (props.count && props.count() !== false) {
         close();
+      }
     };
     return {
       close,

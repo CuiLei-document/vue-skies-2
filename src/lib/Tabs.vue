@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts">
-import { computed, ref, watchEffect } from "vue";
+import { computed, onMounted, ref, watchEffect } from "vue";
 import Tab from "./Tab.vue";
 export default {
   props: {
@@ -58,16 +58,23 @@ export default {
     const indicaltor = ref<HTMLElement>(null);
     const container = ref<HTMLElement>(null);
 
-    watchEffect(() => {
-      if (selectedItem.value && indicaltor.value) {
-        const { width, height } = selectedItem.value.getBoundingClientRect();
-        indicaltor.value.style.width = width + "px";
-        const { left: left1 } = container.value.getBoundingClientRect();
-        const { left: left2 } = selectedItem.value.getBoundingClientRect();
-        const left = left2 - left1;
-        indicaltor.value.style.left = left + "px";
-      }
+    onMounted(() => {
+      watchEffect(
+        () => {
+          if (selectedItem.value && indicaltor.value) {
+            const { width, height } =
+              selectedItem.value.getBoundingClientRect();
+            indicaltor.value.style.width = width + "px";
+            const { left: left1 } = container.value.getBoundingClientRect();
+            const { left: left2 } = selectedItem.value.getBoundingClientRect();
+            const left = left2 - left1;
+            indicaltor.value.style.left = left + "px";
+          }
+        },
+        { flush: "post" }
+      );
     });
+
     return {
       defaults,
       titles,

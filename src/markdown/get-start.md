@@ -8,8 +8,8 @@
 <br />
 <br />
 
-<pre>
-    <code>
-    import {Button,Switch,Tabs,Dialog} from 'skies-ui'
-    </code>
-</pre>
+```
+
+    import {Button,Switch,Tabs,Dialog,openDialog,Input} from 'skies-ui'
+    
+```

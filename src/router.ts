@@ -9,6 +9,7 @@ import InputDemo from './components/InputDemo.vue'
 import install from './markdown/install.md'
 import intro from './markdown/intro.md'
 import GetStart from './markdown/get-start.md'
+import RowDemo from './components/RowDemo.vue'
 import Markdown from './components/Markdown.vue'
 import { h } from '@vue/runtime-core'
 const history = createWebHashHistory()
@@ -55,6 +56,10 @@ export const router = createRouter({
                 {
                     path:'/doc/input',
                     component:InputDemo
+                },
+                {
+                    path:'/doc/row',
+                    component:RowDemo
                 }
             ]
         }

@@ -6,10 +6,18 @@
       </svg>
     </div>
     <ul class="menu">
-      <li>菜单1</li>
-      <li>菜单2</li>
+      <li>
+        <router-link to="/doc/introduce">介绍</router-link>
+        </li>
+      <li>
+        <router-link to="/">首页</router-link>
+      </li>
     </ul>
-    <div class="toggleAside" @click="toggle"></div>
+    <div class="toggleAside" @click="toggle">
+      <svg>
+        <use xlink:href="#icon-caidan"></use>
+      </svg>
+    </div>
   </div>
 </template>
 
@@ -18,7 +26,6 @@ import { inject, Ref } from "vue";
 export default {
   setup() {
     let asideVisible = inject<Ref<boolean>>("asideVisible");
-    console.log("Topnav 获取的是aisideVisible:" + asideVisible.value);
     let toggle = () => {
       asideVisible.value = !asideVisible.value;
     };
@@ -47,9 +54,9 @@ export default {
   > .logo {
     max-width: 6em;
     margin-right: auto;
-    > svg{
-        width:32px;
-        height: 32px;
+    > svg {
+      width: 32px;
+      height: 32px;
     }
   }
   > .menu {
@@ -61,14 +68,18 @@ export default {
     }
   }
   .toggleAside {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     // background:red;
     position: absolute;
     left: 15px;
     top: calc(50% - 10px);
     background: transparent;
     transition: all 250ms;
+    border-radius: 4px;
+    > svg{
+      display:none;
+    } 
   }
   @media (max-width: 500px) {
     .logo {
@@ -80,7 +91,11 @@ export default {
     }
     .toggleAside {
       // display:inline-block;
-      background: red;
+      > svg {
+        display:block;
+        max-width: 100%;
+        max-height: 100%;
+      }
     }
   }
 }
